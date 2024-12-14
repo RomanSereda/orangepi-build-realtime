@@ -203,6 +203,7 @@ if [[ "${1}" == docker && -f /etc/debian_version && -z "$(command -v docker)" ]]
 fi
 
 EXTER="${SRC}/external"
+OVERLAYFS="${SRC}/overlayfs"
 
 # Create userpatches directory if not exists
 mkdir -p "${SRC}"/userpatches
