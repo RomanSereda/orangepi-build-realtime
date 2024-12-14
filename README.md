@@ -34,7 +34,6 @@ policy: fifo: loadavg: 1.27 1.19 0.94 2/161 4702
 
 T: 0 ( 4234) P:80 I:200 C:1001283 Min:      4 Act:   12 Avg:   13 Max:    8380
 T: 1 ( 4235) P:80 I:200 C:1001047 Min:      4 Act:   15 Avg:   13 Max:    8408
-T: 2 ( 4236) P:80 I:200 C:1001103 Min:      4 Act:   35 Avg:   12 Max:    8719
 T: 2 ( 4236) P:80 I:200 C:1005574 Min:      4 Act:   29 Avg:   12 Max:    6719
 T: 3 ( 4237) P:80 I:200 C:1005628 Min:      4 Act:   19 Avg:   13 Max:    9070
 ```
