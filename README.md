@@ -7,29 +7,24 @@ cd rt-tests
 make
 sudo make install
 
-sudo cyclictest -t4 -p1 -i100 -l1000000
+sudo sh -c "echo -1 > /proc/sys/kernel/sched_rt_runtime_us"
+
+ssh_1: sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
+ssh_2: sudo apt update
 ```
 
-realtime:
+realtime (6.1.31-rt11-sun50iw9):
 ```sh
-orangepi@orangepizero2w:~$ sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
-# /dev/cpu_dma_latency set to 0us
-policy: fifo: loadavg: 1.04 1.00 0.54 1/150 2022
-
-T: 0 ( 2013) P:80 I:200 C:1546988 Min:      6 Act:   18 Avg:   16 Max:     306
-T: 1 ( 2014) P:80 I:200 C:1546942 Min:      6 Act:   13 Avg:   16 Max:     342
-T: 2 ( 2015) P:80 I:200 C:1546914 Min:      6 Act:   13 Avg:   16 Max:     399
-T: 3 ( 2016) P:80 I:200 C:1546880 Min:      5 Act:   18 Avg:   16 Max:     333
+T: 0 ( 3651) P:80 I:200 C: 173333 Min:      5 Act:    7 Avg:    9 Max:     271
+T: 1 ( 3652) P:80 I:200 C: 173298 Min:      5 Act:    8 Avg:    9 Max:     183
+T: 2 ( 3653) P:80 I:200 C: 173261 Min:      5 Act:    6 Avg:    8 Max:     275
+T: 3 ( 3654) P:80 I:200 C: 173223 Min:      5 Act:    6 Avg:    8 Max:     300
 ```
 
-default:
+default (6.1.31-sun50iw9):
 ```sh
-orangepi@orangepizero2w:~$ sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
-# /dev/cpu_dma_latency set to 0us
-policy: fifo: loadavg: 1.01 1.02 1.00 1/157 4736
-
-T: 0 ( 4723) P:80 I:200 C:1542879 Min:      4 Act:   15 Avg:   14 Max:     681
-T: 1 ( 4724) P:80 I:200 C:1542726 Min:      5 Act:   22 Avg:   14 Max:     472
-T: 2 ( 4725) P:80 I:200 C:1542604 Min:      4 Act:   15 Avg:   14 Max:     735
-T: 3 ( 4726) P:80 I:200 C:1542433 Min:      4 Act:   12 Avg:   14 Max:    8551
+T: 0 ( 2969) P:80 I:200 C: 116545 Min:      4 Act:   15 Avg:    8 Max:    2807
+T: 1 ( 2970) P:80 I:200 C: 116493 Min:      5 Act:   16 Avg:   10 Max:    2588
+T: 2 ( 2971) P:80 I:200 C: 116280 Min:      5 Act:   12 Avg:    8 Max:    2886
+T: 3 ( 2972) P:80 I:200 C: 116194 Min:      5 Act:   17 Avg:    8 Max:   10533
 ```
