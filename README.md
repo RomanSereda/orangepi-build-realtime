@@ -8,7 +8,8 @@ make
 sudo make install
 
 sudo sh -c "echo -1 > /proc/sys/kernel/sched_rt_runtime_us"
-
+```
+```
 ssh_1: sudo cyclictest --mlockall --smp --priority=80 --interval=200 --distance=0
 ssh_2: sudo apt update
 ```
